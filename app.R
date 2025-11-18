@@ -1,8 +1,3 @@
-# app.R — Full TidyTuesday Prizes Explorer App
-# ---------------------------------------------------------------
-# Required packages:
-# install.packages(c("shiny","dplyr","ggplot2","readr","DT","stringr","tidyr"))
-
 library(shiny)
 library(dplyr)
 library(ggplot2)
@@ -11,9 +6,7 @@ library(DT)
 library(stringr)
 library(tidyr)
 
-# --------------------------------------------------------------------
 # Load data
-# --------------------------------------------------------------------
 
 prizes <- read_csv("prizes_clean.csv", show_col_types = FALSE)
 
@@ -33,9 +26,7 @@ genre_choices <- sort(unique(prizes$prize_genre))
 role_choices  <- sort(unique(prizes$person_role))
 degree_choices <- sort(unique(prizes$highest_degree))
 
-# --------------------------------------------------------------------
 # UI
-# --------------------------------------------------------------------
 
 ui <- navbarPage(
   "British Literary Prizes Explorer",
@@ -138,9 +129,7 @@ ui <- navbarPage(
   )
 )
 
-# --------------------------------------------------------------------
 # SERVER
-# --------------------------------------------------------------------
 
 server <- function(input, output, session) {
 
@@ -272,7 +261,5 @@ server <- function(input, output, session) {
   )
 }
 
-# --------------------------------------------------------------------
 # Run app
-# --------------------------------------------------------------------
 shinyApp(ui, server)
